@@ -16,10 +16,10 @@
 .
 ├── ETL_DAG.py                                # Основной DAG
 ├── Script.py                                 # Python-скрипты
-├── create_schema_stage.sql                   # Создание Stage-слоя
-├── create_schema_mart.sql                    # Создание DataMarts-слоя
-├── create_schema_checks.sql                  # Создание схемы для проверок
 └── sql/                                      # SQL-скрипты
+    ├── create_schema_stage.sql               # Создание Stage-слоя
+    ├── create_schema_mart.sql                # Создание DataMarts-слоя
+    ├── create_schema_checks.sql              # Создание схемы для проверок
     ├── mart.d_calendar.sql                   # Заполнение календаря
     ├── mart.d_city.sql                       # Заполнение справочника городов
     ├── mart.d_customer.sql                   # Заполнение справочника клиентов
@@ -144,7 +144,7 @@
 
 ### Проверка №3 — Минимальное количество записей
 - **Тип**: SQLCheckOperator
-- **Проверяет**: Количество уникальных клиентов > 3
+- **Проверяет**: Количество уникальных клиентов больше 3-х
 - **Таблицы**: `user_order_log`, `user_activity_log`
 - **Действие при ошибке**: Остановка процесса
 
@@ -185,7 +185,7 @@ update_data_mart_d → update_f_sales → update_f_customer_retention
 
 ### f_customer_retention
 Витрина `f_customer_retention` рассчитывает:
-- **new** — клиенты с 1 заказом за неделю
+- **new** — клиенты с 1-м заказом за неделю
 - **returning** — клиенты с больше 1-го заказа за неделю
 - **refunded** — клиенты с возвратами
 - Расчёт по неделям (weekly) с группировкой по товарам
