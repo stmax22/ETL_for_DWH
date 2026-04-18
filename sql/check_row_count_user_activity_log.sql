@@ -1,0 +1,6 @@
+SELECT
+    CASE WHEN COUNT(DISTINCT(customer_id)) > 3
+        THEN TRUE
+        ELSE FALSE
+    END
+FROM stage.user_activity_log;
