@@ -3,4 +3,5 @@ SELECT
         THEN TRUE
         ELSE FALSE
     END
-FROM stage.user_activity_log;
+FROM stage.user_activity_log
+WHERE date_time::DATE = '{{ ds }}';

@@ -29,4 +29,4 @@ SELECT
 	uol.status AS order_status
 FROM stage.user_order_log AS uol
 LEFT JOIN mart.d_calendar AS dc on uol.date_time = dc.date_id
-WHERE uol.date_time = '{{ ds }}';
+WHERE uol.date_time::DATE = '{{ ds }}';

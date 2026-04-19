@@ -72,7 +72,7 @@ def get_report(ti):
             raise TimeoutError('Не удалось получить report_id после 4 попыток')
 
         ti.xcom_push(key='report_id', value=report_id)
-        logging.info(f"По результату запроса report_id={report_id}.")
+        logging.info(f'По результату запроса report_id={report_id}.')
 
     except Exception:
         logging.exception('Ошибка при отправке запроса на получение строкового идентификатора "report_id".')
@@ -96,7 +96,7 @@ def get_increment(date, ti):
             raise ValueError('Значение increment_id пустое.')
 
         ti.xcom_push(key='increment_id', value=increment_id)
-        logging.info(f"По результату запроса increment_id={increment_id}.")
+        logging.info(f'По результату запроса increment_id={increment_id}.')
 
     except Exception:
         logging.exception('Ошибка при отправке запроса на получение строкового идентификатора "get_increment".')
@@ -120,7 +120,7 @@ def create_local_files(ti, filename, date):
 
         # Создаем локальные файлы в которые загрузим данные.
         local_filename = f'{date}_{filename}'
-        with open(local_filename, "wb") as f:
+        with open(local_filename, 'wb') as f:
             f.write(response.content)
 
         logging.info(f'Локальный файл "{local_filename}" создан.')
